@@ -6,7 +6,7 @@ import vizro.models as vm
 from vizro import Vizro
 from vizro.models.types import capture
 
-df = pd.read_csv('vizro/number-of-deaths-by-risk-factor.csv')
+df = pd.read_csv('number-of-deaths-by-risk-factor.csv')
 df['Year'] = pd.to_datetime(df['Year'], format='%Y')
 
 

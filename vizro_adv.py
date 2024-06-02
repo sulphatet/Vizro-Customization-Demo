@@ -14,7 +14,7 @@ from vizro.models._action._actions_chain import _action_validator_factory
 import pandas as pd
 import plotly.graph_objects as go
 
-df = pd.read_csv('vizro/number-of-deaths-by-risk-factor.csv')
+df = pd.read_csv('number-of-deaths-by-risk-factor.csv')
 #df['Year'] = pd.to_datetime(df['Year'], format='%Y')
 
 class YearRangeSelector(vm.RangeSlider):

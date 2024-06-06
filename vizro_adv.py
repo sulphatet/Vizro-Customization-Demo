@@ -22,12 +22,8 @@ class YearRangeSelector(vm.RangeSlider):
 
     def build(self):
         range_slider_build_obj = super().build()
-        range_slider_build_obj[self.id].min = 1990
-        range_slider_build_obj[self.id].max = 2019
         range_slider_build_obj[self.id].value = list(range(1990,2020,1))
         range_slider_build_obj[self.id].allowCross = False
-        range_slider_build_obj[self.id].marks = {i: {'label': "'{}".format(str(i)[-2:]), 
-                                                     'style': {"fontSize": "10px"}} for i in range(1990, 2021, 2)}
         range_slider_build_obj[self.id].tooltip = {"always_visible": True,
                                                     "template": "{value}"
                                                    }
@@ -38,7 +34,12 @@ vm.Parameter.add_type("selector", YearRangeSelector)
 
 filters = [
     vm.Filter(column="Entity", selector=vm.Dropdown(title="Country")),
-    vm.Filter(column="Year", selector=YearRangeSelector())
+    vm.Filter(column="Year", selector=YearRangeSelector(
+        min = 1990,
+        max = 2019,
+        marks = {i: {'label': "'{}".format(str(i)[-2:]), 
+                 'style': {"fontSize": "10px"}} for i in range(1990, 2021, 2)}
+    ))
 ]
 
 components = list()
@@ -99,7 +100,12 @@ def stacked_bar(data_frame):
 
 filters_2 = [
     vm.Filter(column="Entity", selector=vm.Dropdown(title="Country")),
-    vm.Filter(column="Year", selector=YearRangeSelector())
+    vm.Filter(column="Year", selector=YearRangeSelector(
+        min = 1990,
+        max = 2019,
+        marks = {i: {'label': "'{}".format(str(i)[-2:]), 
+                 'style': {"fontSize": "10px"}} for i in range(1990, 2021, 2)}
+    ))
 ]
 
 page_1 = vm.Page(
